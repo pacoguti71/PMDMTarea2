@@ -3,5 +3,6 @@
     <string name="personaje_imagen">Imagen del personaje</string>
     <string name="descripcion">Descripción</string>
     <string name="habilidades">Habilidades</string>
-    <string name="acercade">Acerca de</string>
+    <string name="acercade">Acerca de...</string>
+    <string name="app_author">Francisco Gutiérrez Ruiz</string>
 </resources>

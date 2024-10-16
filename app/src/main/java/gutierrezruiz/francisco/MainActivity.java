@@ -1,22 +1,13 @@
 package gutierrezruiz.francisco;
 
-import static androidx.core.app.PendingIntentCompat.getActivity;
-
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,13 +20,18 @@ public class MainActivity extends AppCompatActivity {
 
     private final List<Personaje> misPersonajes = new ArrayList<>(); // Lista de personajes
 
+    // Creamos la pantalla principal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        // Establecemos el diseño de la pantalla principal
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        // Configuramos la barra de herramientas
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Manejamos los insets para evitar superposición con la barra de estado o de navegación
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -45,47 +41,43 @@ public class MainActivity extends AppCompatActivity {
         // Iniciamos la lista de personajes
         iniciarListaPersonajes();
 
-        // Instanciamos el RecyclerView
-        // Con esto se conecta el RecyclerView que está en el archivo XML con el código Java usando su identificador (ID).
-        // Declaramos aquí el RecyclerView, el adaptador y la lista de personajes para que sean accesibles por toda la clase
-        // RecyclerView
+        // Configuramos el RecyclerView
         RecyclerView miRecyclerView = findViewById(R.id.recyclerViewPersonajes);
-        // Si sabemos que el contenido no va a afectar al tamaño del RecyclerView esta línea mejora el rendimiento.
         miRecyclerView.setHasFixedSize(true);
-        // Le decimos al RecyclerView cómo mostrar los elementos, en este caso uno debajo del otro, usando un LinearLayoutManager.
         miRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // Creamos una línea que divida cada CardView
+
+        // Añadimos una línea divisoria entre los elementos del RecyclerView
         DividerItemDecoration lineaDivisoria = new DividerItemDecoration(miRecyclerView.getContext(), LinearLayoutManager.VERTICAL);
-        // Añadimos la línea al RecyclerView
         miRecyclerView.addItemDecoration(lineaDivisoria);
-        // Creamos un Adapter, que es el encargado de poner los datos (personajes en este caso) dentro del RecyclerView.
-        // Adaptador del RecyclerView
+
+        // Configuramos el adaptador del RecyclerView
         PersonajeAdapter personajeAdapter = new PersonajeAdapter(misPersonajes, this);
-        // Conectamos el Adapter al RecyclerView para que muestre los personajes.
         miRecyclerView.setAdapter(personajeAdapter);
     }
 
-    // Creamos el menu
+    // Creamos el menú de opciones
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Establecemos el diseño del menú de opciones
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
+    // Manejamos las opciones elegidas del menú de opciones
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.:
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    DialogoAlerta dialogo = new DialogoAlerta();
-                    dialogo.show(fragmentManager, "tagAlerta");
-                }
-
-                return true;
+        // Sólo hay una opción elegible
+        if (item.getItemId() == R.id.acercade) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            // Mostramos el dialogo de alerta
+            DialogoAlerta dialogo = new DialogoAlerta();
+            dialogo.show(fragmentManager, "tagAlerta");
+            return true;
         }
+        return super.onOptionsItemSelected(item);
+    }
 
-
-
-    // Método que inicia la lista de personajes. Llama al constrcutor y le pasa un nombre y una imagen
+    // Método que inicia la lista de personajes
     private void iniciarListaPersonajes() {
         misPersonajes.add(new Personaje("Boo", R.drawable.boo, "Boo es un fantasma tímido que forma parte de la corte de Bowser. Es conocido por ser travieso y moverse solo cuando no lo miran.", "Invisibilidad – Boo puede volverse invisible y atravesar paredes cuando nadie lo está mirando."));
         misPersonajes.add(new Personaje("Bowser", R.drawable.bowser, "Bowser es el rey de los Koopas y el archienemigo de Mario. Su gran tamaño y su fuerza lo hacen un rival formidable.", "Llamarada – Bowser puede escupir fuego desde su boca, quemando todo a su paso."));
