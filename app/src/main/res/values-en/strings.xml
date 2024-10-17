@@ -6,7 +6,7 @@
     <string name="descripcion">Description</string>
     <string name="habilidades">Skills</string>
 
-    <string name="acercade">About...</string>
+    <string name="acercade">About..., &#8230;</string>
 
     <string name="menu">Menu</string>
     <string name="aceptar">Accept</string>

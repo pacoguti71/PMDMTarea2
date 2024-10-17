@@ -36,7 +36,7 @@ public class DetallesPersonajeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalles_personaje);
 
         // Configuramos la barra de herramientas
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Manejamos los insets para evitar superposición con la barra de estado o de navegación

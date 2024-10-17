@@ -21,7 +21,6 @@ import java.util.List;
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
  * @since 2024/10/16
- *
  * Toma una lista de personajes y los coloca uno por uno en una vista, mostrando su nombre y su imagen.
  * Cada elemento de la lista es clickeable, y cuando lo haces, abre una nueva pantalla (actividad) con más detalles sobre el personaje.
  * Extiende de la clase estática del fin del código.
@@ -95,7 +94,7 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
                 // String mensaje = context.getString(R.string.mensaje_toast) + personaje.getNombre();
                 Toast toast = Toast.makeText(context, mensaje, Toast.LENGTH_SHORT);
                 // Creamos el TextView con el mensaje
-                TextView textView = (TextView) toast.getView().findViewById(android.R.id.message);
+                TextView textView = toast.getView().findViewById(android.R.id.message);
                 // Aplicamos la fuente personalizada
                 textView.setTypeface(customFont);
                 // Mostramos el toast

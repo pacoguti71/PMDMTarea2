@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
@@ -18,8 +19,7 @@ import androidx.fragment.app.DialogFragment;
  */
 public class DialogoAlerta extends DialogFragment {
 
-    private String autor; // autor de la aplicación
-    private String versionName; // Versión de la aplicación
+
 
     /**
      * Diálogo On create dialog
@@ -28,10 +28,12 @@ public class DialogoAlerta extends DialogFragment {
      * @return el diálogo
      */
     // Creamos el dialogo de alerta
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Inicializamos las variables con el contexto ya disponible
-        autor = getString(R.string.app_author);
+        String autor = getString(R.string.app_author);// autor de la aplicación
+        String versionName; // Versión de la aplicación
 
         try {
             // Obtener la información del paquete y la versión
