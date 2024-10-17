@@ -9,12 +9,24 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-
+/**
+ * @author Francisco Gutiérrez Ruiz
+ * @version 1.0
+ * @since 2024/10/16
+ *
+ * Muestra un diálogo de alerta mostrando información sobre la aplicación.
+ */
 public class DialogoAlerta extends DialogFragment {
 
-    private String autor;
-    private String version;
+    private String autor; // autor de la aplicación
+    private String versionName; // Versión de la aplicación
 
+    /**
+     * Diálogo On create dialog
+     *
+     * @param savedInstanceState el estado de la instancia guardada
+     * @return el diálogo
+     */
     // Creamos el dialogo de alerta
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -25,25 +37,28 @@ public class DialogoAlerta extends DialogFragment {
             // Obtener la información del paquete y la versión
             PackageInfo packageInfo = getActivity().getPackageManager()
                     .getPackageInfo(getActivity().getPackageName(), 0);
-            version = packageInfo.versionName;
+            versionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            version = "N/A"; // En caso de error
+            versionName = getString(R.string.version0); // En caso de error
         }
+
         // Creamos el objeto AlertDialog.Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        String titulo = getActivity().getString(R.string.acercade);
+        String opcionAceptar = getActivity().getString(R.string.aceptar);
+        String mensaje = getString(R.string.mensaje_acerca_de, autor, versionName);
 
-        // Asignamos las propiedades que se mostrarán.
-        builder.setTitle("Acerca de:")
-                .setMessage("Aplicación desarrollada por:\n" + autor + ".\nVersión: " + version)
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+
+        // Estabecemos el título del diálogo
+        builder.setTitle(titulo)
+                // Establecemos el mensaje del diálogo y cuando pulsamos el botón
+                .setMessage(mensaje).setPositiveButton(opcionAceptar, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Acciones a realizar cuando pulsamos el botón.
+                        // Cerramos el diálogo.
                         dialog.cancel();
                     }
                 });
-
+        // Devolvemos el diálogo creado
         return builder.create();
     }
-
-
 }

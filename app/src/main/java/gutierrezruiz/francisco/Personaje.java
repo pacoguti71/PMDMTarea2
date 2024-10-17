@@ -1,10 +1,26 @@
 package gutierrezruiz.francisco;
 
+/**
+ * @author Francisco Gutiérrez Ruiz
+ * @version 1.0
+ * @since 2024/10/16
+ * <p>
+ * Personaje.
+ */
 public class Personaje {
-    private final String nombre;
-    private final int imagenId;
-    private final String descripcion;
-    private final String habilidad;
+    private final String nombre; // Nombre del personaje
+    private final int imagenId; // Imagen del personaje. Es un entero
+    private final String descripcion; // La descripción del personaje
+    private final String habilidad; // La habilidad del personaje
+
+    /**
+     * Instancia un nuevo personaje.
+     *
+     * @param nombre      el nombre
+     * @param imagenId    el id de la imagen
+     * @param descripcion la descripción
+     * @param habilidad   la habilidad
+     */
 
     // Constructor
     public Personaje(String nombre, int imagenId, String descripcion, String habilidad) {
@@ -14,22 +30,38 @@ public class Personaje {
         this.habilidad = habilidad;
     }
 
-    // Método getter que devuelve el nombre del personaje
+    /**
+     * Devuelve el nombre del personaje.
+     *
+     * @return el nombre del personaje
+     */
     public String getNombre() {
         return nombre;
     }
 
-    // Método getter que devuelve la imagen del personaje como un entero
+    /**
+     * Devuelve el id de la imagen del personaje.
+     *
+     * @return el id de la imagen del personaje
+     */
     public int getImagenId() {
         return imagenId;
     }
 
-    // Método getter que devuelve la descripcion del personaje
+    /**
+     * Devuelve la descripcion del personaje.
+     *
+     * @return la descripción del personaje
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
-    // Método getter que devuelve la habilidad del personaje
+    /**
+     * Devuelve la habilidad del personaje.
+     *
+     * @return la habilidad del personaje
+     */
     public String getHabilidad() {
         return habilidad;
     }

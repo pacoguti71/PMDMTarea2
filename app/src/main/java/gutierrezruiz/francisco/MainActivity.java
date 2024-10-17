@@ -3,7 +3,10 @@ package gutierrezruiz.francisco;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,11 +19,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Francisco Gutiérrez Ruiz
+ * @version 1.0
+ * @since 2024/10/16
+ *
+ * Pantalla principal. Muestra una lista de personajes.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private final List<Personaje> misPersonajes = new ArrayList<>(); // Lista de personajes
 
-    // Creamos la pantalla principal
+    /**
+     * Punto de entrada principal de una actividad y se llama cuando la actividad se crea por primera vez.
+     * Android puede destruir una actividad en segundo plano si necesita liberar recursos del sistema
+     * pero Android guarda información sobre su estado actual en un objeto Bundle.
+     *
+     * @param savedInstanceState estado de instancia guardado.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +71,13 @@ public class MainActivity extends AppCompatActivity {
         miRecyclerView.setAdapter(personajeAdapter);
     }
 
-    // Creamos el menú de opciones
+    /**
+     * Crea el menú de opciones de la actividad
+     *
+     * @param menu el menú
+     * @return verdadero si se ha creado el menú
+     */
+// Creamos el menú de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Establecemos el diseño del menú de opciones
@@ -63,35 +85,78 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // Manejamos las opciones elegidas del menú de opciones
+    /**
+     * Gestiona la elección de los items del menú de opciones
+     *
+     * @param item el item seleccionado
+     * @return verdadero si el item ha sido seleccionado
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Sólo hay una opción elegible
-        if (item.getItemId() == R.id.acercade) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            // Mostramos el dialogo de alerta
-            DialogoAlerta dialogo = new DialogoAlerta();
-            dialogo.show(fragmentManager, "tagAlerta");
-            return true;
+        // Manejamos las opciones elegidas. Si fueran más podría usarse un switch
+        if (item.getItemId() == R.id.menu_icon) {
+            // Mostrar el submenú al pulsar el ícono
+            showPopupMenu(findViewById(R.id.menu_icon));
+        } else {
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
-    // Método que inicia la lista de personajes
+    /**
+     * Muestra el submenú al pulsar en el icono cel menú
+     *
+     * @param view la vista
+     */
+    private void showPopupMenu(View view) {
+        // Cargamos el menú del submenú
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenuInflater().inflate(R.menu.submenu, popup.getMenu());
+
+        // Manejamos las selecciones del submenú
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.acercade) {
+                    // Acción para la opción acerca de
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    // Creamos un objeto de nuestra clase DialogoAlerta que muestra el diálogo
+                    DialogoAlerta dialogo = new DialogoAlerta();
+                    // Mostramos el diálogo
+                    dialogo.show(fragmentManager, "dialogoAcercade");
+                    return true;
+                } else if (itemId == R.id.salir) {
+                    // Acción para la opción salir
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+        // Mostramos el PopupMenu
+        popup.show();
+    }
+
+    /**
+     * Inicia la lista de personajes.
+     */
+
     private void iniciarListaPersonajes() {
-        misPersonajes.add(new Personaje("Boo", R.drawable.boo, "Boo es un fantasma tímido que forma parte de la corte de Bowser. Es conocido por ser travieso y moverse solo cuando no lo miran.", "Invisibilidad – Boo puede volverse invisible y atravesar paredes cuando nadie lo está mirando."));
-        misPersonajes.add(new Personaje("Bowser", R.drawable.bowser, "Bowser es el rey de los Koopas y el archienemigo de Mario. Su gran tamaño y su fuerza lo hacen un rival formidable.", "Llamarada – Bowser puede escupir fuego desde su boca, quemando todo a su paso."));
-        misPersonajes.add(new Personaje("Bowser Jr", R.drawable.bowserjr, "Bowser Jr. es el hijo de Bowser, que sigue los pasos de su padre en su lucha contra Mario. Es travieso y tiene mucha energía.", "Cañón Koopa – Bowser Jr. usa su vehículo equipado con cañones para disparar proyectiles."));
-        misPersonajes.add(new Personaje("Daisy", R.drawable.daisy, "Daisy es la princesa de Sarasaland y amiga de Peach. Es extrovertida, enérgica y aventurera.", "Golpe de flor – Daisy puede invocar una ráfaga de flores para atacar a sus enemigos o mejorar sus habilidades."));
-        misPersonajes.add(new Personaje("Diddy Kong", R.drawable.diddykong, "Diddy es el compañero fiel de Donkey Kong. Es ágil, rápido y siempre está listo para la acción.", "Jet Pack – Diddy puede volar usando su mochila propulsora para llegar a lugares altos o esquivar ataques."));
-        misPersonajes.add(new Personaje("Donkey Kong", R.drawable.donkeykong, "Donkey Kong es un gorila fuerte y protector de la isla Kong. Aunque tiene un lado rudo, es muy leal a sus amigos.", "Puñetazo potente – Donkey Kong puede dar un poderoso golpe que derriba a sus enemigos."));
-        misPersonajes.add(new Personaje("Luigi", R.drawable.luigi, "Luigi es el hermano de Mario y un poco más tímido que él, pero siempre está dispuesto a ayudar en la aventura.", "Super Salto – Luigi puede saltar más alto que Mario, lo que le permite alcanzar plataformas más elevadas."));
-        misPersonajes.add(new Personaje("Mario", R.drawable.mario, "Mario es el héroe principal del Reino Champiñón, siempre listo para rescatar a la princesa Peach de las garras de Bowser.", "Salto en pared – Mario puede saltar entre paredes para alcanzar lugares difíciles o esquivar ataques."));
-        misPersonajes.add(new Personaje("Peach", R.drawable.peach, "Peach es la princesa del Reino Champiñón. Aunque es a menudo capturada por Bowser, también sabe defenderse cuando es necesario.", "Flotación – Peach puede flotar en el aire durante un corto período de tiempo, lo que le da ventaja en saltos largos."));
-        misPersonajes.add(new Personaje("Rosalina", R.drawable.rosalina, "Rosalina es la guardiana del cosmos y madre adoptiva de los Lumas. Es sabia, tranquila y poderosa.", "Magia estelar – Rosalina puede controlar las estrellas para lanzar poderosos ataques de energía cósmica."));
-        misPersonajes.add(new Personaje("Toad", R.drawable.toad, "Toad es un habitante del Reino Champiñón, leal a la princesa Peach. Aunque pequeño, es rápido y trabajador.", "Velocidad Champiñón – Toad puede correr a gran velocidad, superando a sus enemigos en carreras cortas."));
-        misPersonajes.add(new Personaje("Waluigi", R.drawable.waluigi, "Waluigi es el rival de Luigi y es conocido por su carácter mezquino y sus habilidades en deportes.", "Trampa de enredadera – Waluigi puede plantar enredaderas que ralentizan a sus oponentes y los atrapan."));
-        misPersonajes.add(new Personaje("Wario", R.drawable.wario, "Wario es el rival de Mario, codicioso y fuerte. Aunque es avaro, también es astuto y siempre busca su propio beneficio.", "Impacto aplastante – Wario puede cargar un ataque para aplastar a sus enemigos con su cuerpo."));
-        misPersonajes.add(new Personaje("Yoshi", R.drawable.yoshi, "Yoshi es un dinosaurio amigable y fiel compañero de Mario. Puede comer enemigos con su larga lengua.", "Salto con patada – Yoshi puede dar un salto seguido de una patada para eliminar enemigos y destruir bloques."));
+        misPersonajes.add(new Personaje(getString(R.string.boo), R.drawable.boo, getString(R.string.boo_descripcion), getString(R.string.boo_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.bowser), R.drawable.bowser, getString(R.string.bowser_descripcion), getString(R.string.bowser_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.bowser_jr), R.drawable.bowserjr, getString(R.string.bowserjr_descripcion), getString(R.string.bowserjr_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.daisy), R.drawable.daisy, getString(R.string.daisy_descripcion), getString(R.string.daisy_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.diddy_kong), R.drawable.diddykong, getString(R.string.diddykong_descripcion), getString(R.string.diddykong_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.donkey_kong), R.drawable.donkeykong, getString(R.string.donkeykong_descripcion), getString(R.string.donkeykong_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.luigi), R.drawable.luigi, getString(R.string.luigi_descripcion), getString(R.string.luigi_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.mario), R.drawable.mario, getString(R.string.mario_descripcion), getString(R.string.mario_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.peach), R.drawable.peach, getString(R.string.peach_descripcion), getString(R.string.peach_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.rosalina), R.drawable.rosalina, getString(R.string.rosalina_descripcion), getString(R.string.rosalina_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.toad), R.drawable.toad, getString(R.string.toad_descripcion), getString(R.string.toad_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.waluigi), R.drawable.waluigi, getString(R.string.waluigi_descripcion), getString(R.string.waluigi_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.wario), R.drawable.wario, getString(R.string.wario_descripcion), getString(R.string.wario_habilidad)));
+        misPersonajes.add(new Personaje(getString(R.string.yoshi), R.drawable.yoshi, getString(R.string.yoshi_descripcion), getString(R.string.yoshi_habilidad)));
+
     }
 }

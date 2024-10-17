@@ -14,19 +14,27 @@
         android:theme="@style/Tema"
         tools:targetApi="31">
 
+        <!-- Pantalla de bienvenida -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Establecemos MainActivity como padre de DetallesPersonajeActivity -->
+
+        <!-- Pantalla principal -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- Pantalla secundaria. Establecemos MainActivity como padre de DetallesPersonajeActivity -->
         <activity
             android:name=".DetallesPersonajeActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

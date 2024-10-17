@@ -7,28 +7,21 @@
 
     <!-- Colores de fondo -->
     <color name="colorBackground">#FFFFFF</color>
-    <color name="colorCardBackground">#F5F5F5</color>
 
     <!-- Colores de texto -->
     <color name="colorTextPrimary">#212121</color> <!-- Texto oscuro principal -->
     <color name="colorTextSecondary">#203FE7</color> <!-- Texto oscuro secundario -->
-    <color name="colorTextHint">#BDBDBD</color> <!-- Color del hint o sugerencia de texto -->
+    <!-- Color del hint o sugerencia de texto -->
 
     <!-- Colores de botones y estados -->
-    <color name="colorButtonNormal">#6200EE</color>
-    <color name="colorButtonPressed">#3700B3</color>
     <color name="colorOnPrimary">#FFFFFF</color> <!-- Color del texto sobre botones o fondos primarios -->
 
     <!-- Colores de bordes y sombras -->
-    <color name="colorShadow">#000000</color>
-    <color name="colorBorder">#E0E0E0</color>
 
     <!-- Colores de error y advertencia -->
-    <color name="colorError">#B00020</color>
-    <color name="colorWarning">#FFA000</color>
 
     <!-- Colores personalizados (por ejemplo, para categorías o indicadores) -->
-    <color name="colorSuccess">#4CAF50</color> <!-- Verde éxito -->
+    <!-- Verde éxito -->
     <color name="colorInfo">#2196F3</color>   <!-- Azul información -->
-    <color name="colorWarningBackground">#FFF8E1</color> <!-- Fondo para advertencias -->
+    <!-- Fondo para advertencias -->
 </resources>

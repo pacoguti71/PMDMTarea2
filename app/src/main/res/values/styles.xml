@@ -62,16 +62,6 @@
         <item name="android:padding">8dp</item>
     </style>
 
-    <!-- Estilo para un EditText personalizado y reutilizable en toda la aplicación -->
-    <style name="EditTextEstilo">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:elevation">4dp</item>
-    </style>
-
     <!-- Estilo para un LinearLayout personalizado y reutilizable en toda la aplicación -->
     <style name="LinearLayoutEstilo">
         <item name="android:layout_width">match_parent</item>
@@ -81,21 +71,15 @@
         <item name="android:background">@color/colorBackground</item>
     </style>
 
-    <!-- Estilo para un ImageView personalizado y reutilizable en toda la aplicación -->
-    <style name="ImageViewEstilo">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:scaleType">centerCrop</item>
-        <item name="android:tint">@color/colorAccent</item>
+    <!-- Estilo para una Lpantalla splash de bienvenida -->
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/pantalla_bienvenida</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
-    <!-- Estilo para un TextInputLayout (Material Design) -->
-    <style name="TextInputLayoutEstilo">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
-        <item name="boxBackgroundMode">outline</item>
-    </style>
+    <style name="AppTheme">AppTheme
+    </style> <!-- Muestra la imagen a pantalla completa y elimina la barra de título -->
 
 </resources>
 

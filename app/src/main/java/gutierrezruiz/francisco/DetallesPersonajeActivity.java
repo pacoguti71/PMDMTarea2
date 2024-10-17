@@ -14,37 +14,55 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * @author Francisco Gutiérrez Ruiz
+ * @version 1.0
+ * @since 2024/10/16
+ *
+ * Muestra los detalles de un personaje.
+ */
 public class DetallesPersonajeActivity extends AppCompatActivity {
 
+    /**
+     * Método On create.
+     *
+     * @param savedInstanceState el estado de la instancia guardada
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        // Establecemos el diseño de la pantalla secundaria
         setContentView(R.layout.activity_detalles_personaje);
+
+        // Configuramos la barra de herramientas
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Manejamos los insets para evitar superposición con la barra de estado o de navegación
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Referencias a los elementos de la UI
+
+        // Obtenemos las referencias a los elementos de la UI
         TextView nombrePersonajeTextView = findViewById(R.id.nombrePersonaje);
         ImageView imagenPersonajeImageView = findViewById(R.id.imagenPersonaje);
         TextView descripcionPersonajeTextView = findViewById(R.id.descripcionPersonaje);
         TextView habilidadPersonajeTextView = findViewById(R.id.habilidadPersonaje);
 
-        // Obtener los datos pasados a través del intent
+        // Obtenemos los datos pasados a través del intent
         Intent intent = getIntent();
         String nombrePersonaje = intent.getStringExtra("nombrePersonaje");
         int imagenPersonajeId = intent.getIntExtra("imagenPersonaje", -1);
         String descripcionPersonaje = intent.getStringExtra("descripcionPersonaje");
         String habilidadPersonaje = intent.getStringExtra("habilidadPersonaje");
 
-        // Asignar los datos a los elementos visuales
+        // Asignamos los datos a los elementos visuales
         nombrePersonajeTextView.setText(nombrePersonaje);
         if (imagenPersonajeId != -1) {
+            // Si la imagen existe
             imagenPersonajeImageView.setImageResource(imagenPersonajeId);
         }
         descripcionPersonajeTextView.setText(descripcionPersonaje);
