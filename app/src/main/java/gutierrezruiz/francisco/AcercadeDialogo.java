@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.Objects;
+
 /**
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
@@ -37,8 +39,8 @@ public class AcercadeDialogo extends DialogFragment {
 
         try {
             // Obtener la información del paquete y la versión
-            PackageInfo packageInfo = getActivity().getPackageManager()
-                    .getPackageInfo(getActivity().getPackageName(), 0);
+            PackageInfo packageInfo = requireActivity().getPackageManager()
+                    .getPackageInfo(requireActivity().getPackageName(), 0);
             versionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             versionName = getString(R.string.version0); // En caso de error
