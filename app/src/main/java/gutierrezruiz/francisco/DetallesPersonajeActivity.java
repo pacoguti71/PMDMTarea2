@@ -76,7 +76,7 @@ public class DetallesPersonajeActivity extends AppCompatActivity {
                 // Navegar hacia la actividad padre
                 // En el AndroidManifest hemos incluido estas líneas en DetallesPersonajeActivity
                 //       android:name=".DetallesPersonajeActivity"
-                //       android:parentActivityName=".MainActivity"
+                //       android:parentActivityName=".PrincipalActivity"
                 NavUtils.navigateUpFromSameTask(DetallesPersonajeActivity.this);
             }
         };

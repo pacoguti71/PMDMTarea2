@@ -17,7 +17,7 @@ import androidx.fragment.app.DialogFragment;
  *
  * Muestra un diálogo de alerta mostrando información sobre la aplicación.
  */
-public class DialogoAlerta extends DialogFragment {
+public class AcercadeDialogo extends DialogFragment {
 
 
 

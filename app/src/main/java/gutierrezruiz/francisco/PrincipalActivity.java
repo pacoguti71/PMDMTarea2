@@ -26,7 +26,7 @@ import java.util.List;
  *
  * Pantalla principal. Muestra una lista de personajes.
  */
-public class MainActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity {
 
     private final List<Personaje> misPersonajes = new ArrayList<>(); // Lista de personajes
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Establecemos el diseño de la pantalla principal
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_principal);
 
         // Configuramos la barra de herramientas
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -121,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 if (itemId == R.id.acercade) {
                     // Acción para la opción acerca de
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    // Creamos un objeto de nuestra clase DialogoAlerta que muestra el diálogo
-                    DialogoAlerta dialogo = new DialogoAlerta();
+                    // Creamos un objeto de nuestra clase AcercadeDialogo que muestra el diálogo
+                    AcercadeDialogo dialogo = new AcercadeDialogo();
                     // Mostramos el diálogo
                     dialogo.show(fragmentManager, "dialogoAcercade");
                     return true;

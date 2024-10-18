@@ -9,7 +9,7 @@
     <string name="habilidades">Habilidades</string>
 
     <!-- Menú -->
-    <string name="acercade">Acerca de ...,&#8230;</string>
+    <string name="acercade">Acerca de&#8230;</string>
     <string name="menu">Menu</string>
     <string name="aceptar">Aceptar</string>
     <string name="salir">Salir</string>

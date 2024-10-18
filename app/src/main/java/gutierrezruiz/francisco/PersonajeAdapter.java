@@ -20,11 +20,11 @@ import java.util.List;
 /**
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
- * @since 2024/10/16
- * Toma una lista de personajes y los coloca uno por uno en una vista, mostrando su nombre y su imagen.
- * Cada elemento de la lista es clickeable, y cuando lo haces, abre una nueva pantalla (actividad) con más detalles sobre el personaje.
- * Extiende de la clase estática del fin del código.
- * Este adaptador maneja los datos de los personajes y los asigna al diseño de cada ítem. El contexto es dónde se mostrará la lista.
+ * @since 2024/10/16 Toma una lista de personajes y los coloca uno por uno en una vista, mostrando
+ * su nombre y su imagen. Cada elemento de la lista es clickeable, y cuando lo haces, abre una nueva
+ * pantalla (actividad) con más detalles sobre el personaje. Extiende de la clase estática del fin
+ * del código. Este adaptador maneja los datos de los personajes y los asigna al diseño de cada
+ * ítem. El contexto es dónde se mostrará la lista.
  */
 public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.PersonajeViewHolder> {
 
@@ -44,10 +44,10 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
     }
 
     /**
-     * Método parte de la clase RecyclerView.Adapter, que se utiliza para mostrar
-     * una lista de elementos en un RecyclerView. Es responsable de crear un nuevo
-     * ViewHolder cada vez que el RecyclerView necesita mostrar un nuevo elemento
-     * en la lista. El ViewHolder es una clase que contiene las vistas que representan un elemento individual en la lista
+     * Método parte de la clase RecyclerView.Adapter, que se utiliza para mostrar una lista de
+     * elementos en un RecyclerView. Es responsable de crear un nuevo ViewHolder cada vez que el
+     * RecyclerView necesita mostrar un nuevo elemento en la lista. El ViewHolder es una clase que
+     * contiene las vistas que representan un elemento individual en la lista
      *
      * @param parent   el ViewGroup padre. Normalmente el RecyclerView
      * @param viewType entero que representa el tipo de vista que se debe crear
@@ -64,11 +64,12 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
     }
 
     /**
-     * Método parte de la clase RecyclerView.Adapter, responsable de actualizar los datos
-     * de un ViewHolder existente con la información del elemento que se va a mostrar en
-     * la posición especificada.
+     * Método parte de la clase RecyclerView.Adapter, responsable de actualizar los datos de un
+     * ViewHolder existente con la información del elemento que se va a mostrar en la posición
+     * especificada.
      *
-     * @param holder   ViewHolder que se va a actualizar. Ha sido creado previamente por el método onCreateViewHolder().
+     * @param holder   ViewHolder que se va a actualizar. Ha sido creado previamente por el método
+     *                 onCreateViewHolder().
      * @param position posición del elemento en la lista que se va a mostrar
      */
     @Override
@@ -91,14 +92,20 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
                 Typeface customFont = ResourcesCompat.getFont(v.getContext(), R.font.maquinaescribir);
                 // Creamos el toast a mostrar
                 String mensaje = context.getString(R.string.mensaje_toast, personaje.getNombre());
-                // String mensaje = context.getString(R.string.mensaje_toast) + personaje.getNombre();
                 Toast toast = Toast.makeText(context, mensaje, Toast.LENGTH_SHORT);
-                // Creamos el TextView con el mensaje
-                TextView textView = toast.getView().findViewById(android.R.id.message);
-                // Aplicamos la fuente personalizada
-                textView.setTypeface(customFont);
-                // Mostramos el toast
+                // Verificamos que el Toast tiene una vista
+                View toastView = toast.getView();
+                if (toastView != null) {
+                    // Buscamos el TextView dentro de la vista del Toast
+                    TextView textView = toastView.findViewById(android.R.id.message);
+                    if (textView != null) {
+                        // Aplicamos la fuente personalizada solo si el TextView fue encontrado
+                        textView.setTypeface(customFont);
+                    }
+                }
+                // Mostramos el Toast
                 toast.show();
+
 
                 // Crea un intent para ir a DetallesPersonajeActivity
                 Intent intent = new Intent(context, DetallesPersonajeActivity.class);
@@ -125,8 +132,8 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
     }
 
     /**
-     * Clase estática. Conecta los elementos de la interfaz (imagen y nombre)
-     * con su correspondiente vista en el diseño (item_personaje).
+     * Clase estática. Conecta los elementos de la interfaz (imagen y nombre) con su correspondiente
+     * vista en el diseño (item_personaje).
      */
     public static class PersonajeViewHolder extends RecyclerView.ViewHolder {
         ImageView imagenPersonaje; // La imagen del personaje
