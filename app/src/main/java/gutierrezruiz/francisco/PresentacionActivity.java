@@ -12,11 +12,11 @@ public class PresentacionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presentacion);
 
-        // Mostrar la pantalla de splash durante 3 segundos
+        // Mostramos la pantalla splash durante 3 segundos
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Después de 3 segundos, lanzar la actividad principal
+                // Después de 3 segundos, lanzamos la actividad principal
                 Intent intent = new Intent(PresentacionActivity.this, PrincipalActivity.class);
                 startActivity(intent);
                 // Finaliza esta actividad para que no vuelva al presionar "atrás"

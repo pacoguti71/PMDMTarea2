@@ -16,11 +16,10 @@ import java.util.Objects;
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
  * @since 2024/10/16
- *
+ * <p>
  * Muestra un diálogo de alerta mostrando información sobre la aplicación.
  */
 public class AcercadeDialogo extends DialogFragment {
-
 
 
     /**
@@ -33,14 +32,13 @@ public class AcercadeDialogo extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Inicializamos las variables con el contexto ya disponible
-        String autor = getString(R.string.app_author);// autor de la aplicación
+        // Inicializamos las variables
+        String autor = getString(R.string.app_author);// Autor de la aplicación
         String versionName; // Versión de la aplicación
 
+        // Intentamos obtener la información del paquete y la versión
         try {
-            // Obtener la información del paquete y la versión
-            PackageInfo packageInfo = requireActivity().getPackageManager()
-                    .getPackageInfo(requireActivity().getPackageName(), 0);
+            PackageInfo packageInfo = requireActivity().getPackageManager().getPackageInfo(requireActivity().getPackageName(), 0);
             versionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             versionName = getString(R.string.version0); // En caso de error
@@ -53,12 +51,10 @@ public class AcercadeDialogo extends DialogFragment {
         String mensaje = getString(R.string.mensaje_acerca_de, autor, versionName);
 
 
-        // Estabecemos el título del diálogo
-        builder.setTitle(titulo)
-                // Establecemos el mensaje del diálogo y cuando pulsamos el botón
-                .setMessage(mensaje).setPositiveButton(opcionAceptar, new DialogInterface.OnClickListener() {
+        // Estabecemos el título y el mensaje del diálogo
+        builder.setTitle(titulo).setMessage(mensaje).setPositiveButton(opcionAceptar, new DialogInterface.OnClickListener() {
+                    // Cuando pulsamos el botón cerramos el diálogo
                     public void onClick(DialogInterface dialog, int id) {
-                        // Cerramos el diálogo.
                         dialog.cancel();
                     }
                 });

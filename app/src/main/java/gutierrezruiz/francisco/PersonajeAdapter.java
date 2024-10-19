@@ -20,7 +20,9 @@ import java.util.List;
 /**
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
- * @since 2024/10/16 Toma una lista de personajes y los coloca uno por uno en una vista, mostrando
+ * @since 2024/10/16
+ *
+ * Toma una lista de personajes y los coloca uno por uno en una vista, mostrando
  * su nombre y su imagen. Cada elemento de la lista es clickeable, y cuando lo haces, abre una nueva
  * pantalla (actividad) con más detalles sobre el personaje. Extiende de la clase estática del fin
  * del código. Este adaptador maneja los datos de los personajes y los asigna al diseño de cada
@@ -146,7 +148,7 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
          *
          * @param itemView la vista del elemento
          */
-        // Coinstructor
+        // Constructor
         public PersonajeViewHolder(@NonNull View itemView) {
             super(itemView);
             imagenPersonaje = itemView.findViewById(R.id.imagenPersonaje);

@@ -73,7 +73,7 @@ public class DetallesPersonajeActivity extends AppCompatActivity {
             @Override
             // Hará esto:
             public void handleOnBackPressed() {
-                // Navegar hacia la actividad padre
+                // Navegamos hacia la actividad padre
                 // En el AndroidManifest hemos incluido estas líneas en DetallesPersonajeActivity
                 //       android:name=".DetallesPersonajeActivity"
                 //       android:parentActivityName=".PrincipalActivity"
@@ -83,6 +83,5 @@ public class DetallesPersonajeActivity extends AppCompatActivity {
 
         // Le decimos a Android (Dispatcher) que ejecute la función definida en el callback
         getOnBackPressedDispatcher().addCallback(this, callback);
-
     }
 }

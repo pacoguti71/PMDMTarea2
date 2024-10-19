@@ -41,6 +41,7 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- Estilo de un TextView personalizado y reutilizable en toda la aplicación -->
     <style name="titulo">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -51,6 +52,7 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- Estilo de un TextView personalizado y reutilizable en toda la aplicación -->
     <style name="detallesPersonaje">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -71,7 +73,7 @@
         <item name="android:background">@color/colorBackground</item>
     </style>
 
-    <!-- Estilo para una Lpantalla splash de bienvenida -->
+    <!-- Estilo para una Pantalla splash de bienvenida -->
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/pantalla_bienvenida</item>
         <item name="android:windowNoTitle">true</item>

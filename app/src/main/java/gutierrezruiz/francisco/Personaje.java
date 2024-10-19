@@ -4,7 +4,7 @@ package gutierrezruiz.francisco;
  * @author Francisco Gutiérrez Ruiz
  * @version 1.0
  * @since 2024/10/16
- * <p>
+ *
  * Personaje.
  */
 public class Personaje {

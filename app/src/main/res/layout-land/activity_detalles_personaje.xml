@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- Definimos un LinearLayout vertical-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
@@ -18,6 +18,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <!-- Colocamos el nombre del personaje -->
     <TextView
         android:id="@+id/nombrePersonaje"
         style="@style/nombrePersonaje"
@@ -26,12 +27,13 @@
         android:layout_gravity="center"
         android:paddingTop="16dp" />
 
-
+    <!-- Definimos un LinearLayout horizontal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Colocamos la imagen del personaje -->
         <ImageView
             android:id="@+id/imagenPersonaje"
             android:layout_width="150dp"
@@ -40,11 +42,13 @@
             android:contentDescription="@string/personaje_imagen"
             android:scaleType="fitCenter" />
 
+        <!-- Definimos un LinearLayout vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:orientation="vertical">
 
+            <!-- Colocamos el título Descripción -->
             <TextView
                 android:id="@+id/textViewDescripcion"
                 style="@style/titulo"
@@ -53,7 +57,7 @@
                 android:text="@string/descripcion"
                 android:textAlignment="textStart" />
 
-
+            <!-- Colocamos la descripción del personaje -->
             <TextView
                 android:id="@+id/descripcionPersonaje"
                 style="@style/detallesPersonaje"
@@ -62,6 +66,7 @@
                 android:layout_gravity="center"
                 android:textSize="14sp" />
 
+            <!-- Colocamos el título Habilidades -->
             <TextView
                 android:id="@+id/textViewHabilidades"
                 style="@style/titulo"
@@ -69,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/habilidades" />
 
-
+            <!-- Colocamos las habilidades del personaje -->
             <TextView
                 android:id="@+id/habilidadPersonaje"
                 style="@style/detallesPersonaje"
@@ -77,13 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="14sp" />
-
-
-
         </LinearLayout>
-
-
-
     </LinearLayout>
-
 </LinearLayout>
